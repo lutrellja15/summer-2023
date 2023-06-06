@@ -22,12 +22,20 @@ int main() {
     int studentID;
     double scholarshipAmount;
 
+    cout << "***************WELCOME TO THE SEMESTER**************" << endl;
+    cout << endl;
+    
     // Get user information
-    cout << "Enter your first name, followed by your last name, and your student ID " << endl;
+    cout << "Please enter your first name, followed by your last name, and your student ID " << endl;
     cout << "Do not include the A or leading 0s in your ID" << endl;
+    cout << endl;
     cin >> firstName >> lastName >> studentID;
     cout << endl << endl;
     
+    // Scholarship Information
+    cout << "Did you recieve a scholarship, if so please enter that amount or enter 0." << endl;
+    cin >> scholarshipAmount;
+    cout << endl << endl;
 
     // Confirmation statement
     cout << "Dear " << firstName << " " << lastName << " " << "("<<studentID<<")" << endl;
@@ -35,18 +43,38 @@ int main() {
     cout << endl << endl;
 
     // Course Details
-    cout << "**********COURSE DETAILS**********"<< endl;
-    cout << "Prefix" << setw(10) << "No." << setw(10) << "Title " << setw(20) << "Credit Hour" << endl;
-    cout << "************************************************" << endl;
-    cout << "CS" << setw(10) << "310" << setw(10) << "Ethics of Computing" << setw(20) << "1" << endl;
-
+    cout << "           **********COURSE DETAILS**********" <<endl;
+    cout << "Prefix" << setw(10) << "No." << setw(15) << "Title " << setw(30) << "Credit Hour" << endl;
+    cout << "**************************************************************" << endl;
+    cout << "CS" << setw(14) << "310" << setw(28) << "Ethics of Computing" << setw(12) << "1" << endl;
+    cout << "CS" << setw(14) << "317" << setw(27) << "Computer Science 1" << setw(13) << "3" << endl;
+    cout << "ITE" << setw(13) << "305" << setw(32) << "Networking Fundamentals" << setw(8) << "2" << endl;
+    cout << "ITE" << setw(13) << "306" << setw(28) << "Local Area Networks" << setw(12) << "2" << endl;
     cout << endl << endl;
+    
+    int totalCreditHours = 1 + 3 + 2 + 2;
+    cout << "Total Enrollement Hours:" << setw(32) << totalCreditHours << endl;
+    cout << endl << endl;
+    
+    double tuitionCost = tuition_per_credit_hour * totalCreditHours;
+    double totalAmountDue = tuitionCost + registration_fees - scholarshipAmount;
+    cout << fixed << setprecision(2);
+    cout << " **********BILLING INFORMATION**********" << endl;
+    cout << setw(11) << "Tuition" << setw(29) << tuitionCost << endl;
+    cout << setw(11) << "Fees" << setw(29) << tuitionCost << endl;
+    cout << setw(8) << "Scholarship" << setw(29) << tuitionCost << endl;
+    cout << endl;
+    cout << "Total Due:" << setw(30) << totalAmountDue << endl;
+    
 
    return 0;
 }
 
 
-
+// current classes are : CS 310 - Professional Ethis of Computing - 1 hour
+//                      CS 317 - Computer Science 1 - 3 hours
+//                      ITE 305 - Networking Fundamentals - 2 hours
+//                      ITE 306 - Local Area Networks - 2 hours
 
  /*   
     << fixed << setprecision(2) << scholarshipAmount << "\n";
