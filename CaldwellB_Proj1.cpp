@@ -30,14 +30,13 @@ int main() {
     cout << "Do not include the A or leading 0s in your ID" << endl;
     cout << endl;
     cin >> firstName >> lastName >> studentID;
-    cout << endl << endl;
     
     // Scholarship Information
     cout << "Did you recieve a scholarship, if so please enter that amount or enter 0." << endl;
     cin >> scholarshipAmount;
-
-    // Confirmation statement
     cout << endl << endl;
+    
+    // Confirmation statement
     cout << "Dear " << firstName << " " << lastName << " " << "("<<studentID<<")" << endl;
     cout << "Thank you for entering your information, below is your class listing and bill for the Spring 2023 semester." << endl;
     cout << endl << endl;
@@ -56,6 +55,7 @@ int main() {
     cout << "Total Enrollement Hours:" << setw(32) << totalCreditHours << endl;
     cout << endl << endl;
     
+    // Billing information
     double tuitionCost = tuition_per_credit_hour * totalCreditHours;
     double totalAmountDue = tuitionCost + registration_fees - scholarshipAmount;
     cout << fixed << setprecision(2);
@@ -109,4 +109,3 @@ int main() {
     
     cout << "Total Due: $" << totalAmountDue << endl;
 */
- 
