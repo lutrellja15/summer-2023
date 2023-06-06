@@ -54,7 +54,7 @@ int main() {
     cout << endl << endl;
     
     int totalCreditHours = 1 + 3 + 2 + 2;
-    cout << "Total Enrollement Hours:" << setw(32) << totalCreditHours << endl;
+    cout << "Total Enrollement Hours:" << setw(28) << totalCreditHours << endl;
     cout << endl << endl;
     
     // Billing information
