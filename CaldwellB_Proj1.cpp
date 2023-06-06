@@ -22,7 +22,7 @@ int main() {
     int studentID;
     double scholarshipAmount;
 
-    cout << "***************WELCOME TO THE SEMESTER**************" << endl;
+    cout <<"            ***************WELCOME TO THE SEMESTER**************" << endl;
     cout << endl;
     
     // Get user information
@@ -30,6 +30,8 @@ int main() {
     cout << "Do not include the A or leading 0s in your ID" << endl;
     cout << endl;
     cin >> firstName >> lastName >> studentID;
+    cout << endl;
+    
     
     // Scholarship Information
     cout << "Did you recieve a scholarship, if so please enter that amount or enter 0." << endl;
@@ -43,12 +45,12 @@ int main() {
 
     // Course Details
     cout << "           **********COURSE DETAILS**********" <<endl;
-    cout << "Prefix" << setw(10) << "No." << setw(15) << "Title " << setw(30) << "Credit Hour" << endl;
+    cout << "Prefix" << setw(10) << "No." << setw(10) << "Title " << setw(30) << "Credit Hour" << endl;
     cout << "**************************************************************" << endl;
-    cout << "CS" << setw(14) << "310" << setw(28) << "Ethics of Computing" << setw(12) << "1" << endl;
-    cout << "CS" << setw(14) << "317" << setw(27) << "Computer Science 1" << setw(13) << "3" << endl;
-    cout << "ITE" << setw(13) << "305" << setw(32) << "Networking Fundamentals" << setw(8) << "2" << endl;
-    cout << "ITE" << setw(13) << "306" << setw(28) << "Local Area Networks" << setw(12) << "2" << endl;
+    cout << "CS" << setw(14) << "310" << setw(23) << "Ethics of Computing" << setw(13) << "1" << endl;
+    cout << "CS" << setw(14) << "317" << setw(22) << "Computer Science 1" << setw(14) << "3" << endl;
+    cout << "ITE" << setw(13) << "305" << setw(27) << "Networking Fundamentals" << setw(9) << "2" << endl;
+    cout << "ITE" << setw(13) << "306" << setw(23) << "Local Area Networks" << setw(13) << "2" << endl;
     cout << endl << endl;
     
     int totalCreditHours = 1 + 3 + 2 + 2;
