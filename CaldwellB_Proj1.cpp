@@ -35,9 +35,9 @@ int main() {
     // Scholarship Information
     cout << "Did you recieve a scholarship, if so please enter that amount or enter 0." << endl;
     cin >> scholarshipAmount;
-    cout << endl << endl;
 
     // Confirmation statement
+    cout << endl << endl;
     cout << "Dear " << firstName << " " << lastName << " " << "("<<studentID<<")" << endl;
     cout << "Thank you for entering your information, below is your class listing and bill for the Spring 2023 semester." << endl;
     cout << endl << endl;
@@ -61,8 +61,8 @@ int main() {
     cout << fixed << setprecision(2);
     cout << " **********BILLING INFORMATION**********" << endl;
     cout << setw(11) << "Tuition" << setw(29) << tuitionCost << endl;
-    cout << setw(11) << "Fees" << setw(29) << tuitionCost << endl;
-    cout << setw(8) << "Scholarship" << setw(29) << tuitionCost << endl;
+    cout << setw(11) << "Fees" << setw(29) << registration_fees << endl;
+    cout << setw(8) << "Scholarship" << setw(29) << scholarshipAmount << endl;
     cout << endl;
     cout << "Total Due:" << setw(30) << totalAmountDue << endl;
     
@@ -109,6 +109,4 @@ int main() {
     
     cout << "Total Due: $" << totalAmountDue << endl;
 */
-
-
  
