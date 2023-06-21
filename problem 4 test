@@ -1,0 +1,57 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+
+int main() {
+    const string FILENAME = "grocery_list.txt";
+    ofstream outputFile(FILENAME);
+
+    int choice;
+    string stores[3] = {"Wal-Mart", "Hometown Market", "Sam's Club"};
+    string items[3][5];
+
+    do {
+        cout << "Menu:\n";
+        cout << "1. Wal-Mart\n";
+        cout << "2. Hometown Market\n";
+        cout << "3. Sam's Club\n";
+        cout << "4. Done\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice >= 1 && choice <= 3) {
+            int storeIndex = choice - 1;
+            cout << "Enter five grocery items for " << stores[storeIndex] << ":\n";
+            for (int i = 0; i < 5; i++) {
+                cout << "Item " << (i + 1) << ": ";
+                cin >> items[storeIndex][i];
+            }
+        }
+    } while (choice >= 1 && choice <= 3);
+
+    cout << "\nItems entered for the following store(s):\n";
+    outputFile << "Items entered for the following store(s):\n";
+    for (int i = 0; i < 3; i++) {
+        if (!items[i][0].empty()) {
+            cout << stores[i] << ":\n";
+            outputFile << stores[i] << ":\n";
+            for (int j = 0; j < 5; j++) {
+                if (!items[i][j].empty()) {
+                    cout << "- " << items[i][j] << "\n";
+                    outputFile << "- " << items[i][j] << "\n";
+                }
+            }
+            cout << "\n";
+            outputFile << "\n";
+        }
+    }
+
+    outputFile.close();
+    cout << "Grocery list has been saved to " << FILENAME << "\n";
+
+    return 0;
+}
