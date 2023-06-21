@@ -15,7 +15,7 @@ using namespace std;
 // function to get grocery items for a store
 void getGroceryItems(vector<string>& items) {
     cout << "Enter five grocery items:" << endl;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i <= 5; i++) {
         string item;
         getline(cin, item);
         items.push_back(item);
@@ -25,9 +25,15 @@ void getGroceryItems(vector<string>& items) {
 // function to display grocery items for a store
 void displayGroceryItems(vector<string>& items) {
     cout << "Grocery items:" << endl;
-    for (string item : items) {
-        cout << "- " << item << endl;
+    
+    string items1;
+    for (int i=0; i<=4; i++) {
+        cout << "- " << items1 << endl;
     }
+
+  //  for (string item : items) {
+  //      cout << "- " << item << endl;
+  //  }
 }
 
 int main() {
