@@ -2,7 +2,7 @@
 Baylee Caldwell
 00106404
 June 7, 2023
-Project 1
+Project 2
 ****************/
 
 
@@ -12,6 +12,7 @@ Project 1
 using namespace std;
 
 int main() {
+    //Part 1
     // Constants
     const double tuition_per_credit_hour = 263.00;
     const double registration_fees = 162.50;
@@ -25,6 +26,20 @@ int main() {
     const int one_credit_hour = 1;
     const int two_credit_hours = 2;
     const int three_credit_hours = 3;
+
+    string prefix0 = "CS";
+    string prefix1 = "ITE";
+
+    string coursenum1 = "310";
+    string coursenum2 = "317";
+    string coursenum3= "305";
+    string coursenum4 = "306";
+
+    string class1 = "Ethics of Computing";
+    string class2 = "Computer Science 1";
+    string class3 = "Networking Fundamentals";
+    string class4 = "Local Area Networks";
+
 
     cout <<"            ***************WELCOME TO THE SEMESTER**************" << endl;
     cout << endl;
@@ -51,10 +66,10 @@ int main() {
     cout << "           **********COURSE DETAILS**********" <<endl;
     cout << "Prefix" << setw(10) << "No." << setw(10) << "Title " << setw(30) << "Credit Hour" << endl;
     cout << "**************************************************************" << endl;
-    cout << "CS" << setw(14) << "310" << setw(23) << "Ethics of Computing" << setw(13) << one_credit_hour << endl;
-    cout << "CS" << setw(14) << "317" << setw(22) << "Computer Science 1" << setw(14) << three_credit_hours << endl;
-    cout << "ITE" << setw(13) << "305" << setw(27) << "Networking Fundamentals" << setw(9) << two_credit_hours << endl;
-    cout << "ITE" << setw(13) << "306" << setw(23) << "Local Area Networks" << setw(13) << two_credit_hours << endl;
+    cout << prefix0 << setw(14) << coursenum1 << setw(23) << class1 << setw(13) << one_credit_hour << endl;
+    cout << prefix0 << setw(14) << coursenum2 << setw(22) << class2 << setw(14) << three_credit_hours << endl;
+    cout << prefix1 << setw(13) << coursenum3 << setw(27) << class3 << setw(9) << two_credit_hours << endl;
+    cout << prefix1 << setw(13) << coursenum4 << setw(23) << class4 << setw(13) << two_credit_hours << endl;
     cout << endl << endl;
     
 
@@ -73,31 +88,8 @@ int main() {
     cout << endl;
     cout << "Total Due:" << setw(30) << totalAmountDue << endl;
     
+    //Part 2
+    
 
    return 0;
 }
-
-
-/*
-Your class information should have also been assigned to string variables and not hard coded into your output, same with your prefix numbers.
-*/
-
-/*
-
-string class1 = 'Ethics of Computing'
-string class2 = 'Computer Science 1'
-string class3 = 'Networking Fundamentals'
-string class4 = 'Local Area Networks'
-
-string prefix0 = "CS"
-string prefix1 = "ITE"
-
-string coursenum1 = '310'
-string coursenum2 = '317'
-string coursenum3= '305'
-string coursenum4 = '306'
-
-
-
-
-*/
