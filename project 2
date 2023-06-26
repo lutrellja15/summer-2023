@@ -1,0 +1,103 @@
+/***************
+Baylee Caldwell
+00106404
+June 7, 2023
+Project 1
+****************/
+
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    // Constants
+    const double tuition_per_credit_hour = 263.00;
+    const double registration_fees = 162.50;
+
+    // User input
+    string firstName;
+    string lastName;
+    int studentID;
+    double scholarshipAmount;
+
+    const int one_credit_hour = 1;
+    const int two_credit_hours = 2;
+    const int three_credit_hours = 3;
+
+    cout <<"            ***************WELCOME TO THE SEMESTER**************" << endl;
+    cout << endl;
+    
+    // Get user information
+    cout << "Please enter your first name, followed by your last name, and your student ID " << endl;
+    cout << "Do not include the A or leading 0s in your ID" << endl;
+    cout << endl;
+    cin >> firstName >> lastName >> studentID;
+    cout << endl;
+    
+    
+    // Scholarship Information
+    cout << "Did you recieve a scholarship, if so please enter that amount or enter 0." << endl;
+    cin >> scholarshipAmount;
+    cout << endl << endl;
+    
+    // Confirmation statement
+    cout << "Dear " << firstName << " " << lastName << " " << "("<<studentID<<")" << endl;
+    cout << "Thank you for entering your information, below is your class listing and bill for the Spring 2023 semester." << endl;
+    cout << endl << endl;
+
+    // Course Details
+    cout << "           **********COURSE DETAILS**********" <<endl;
+    cout << "Prefix" << setw(10) << "No." << setw(10) << "Title " << setw(30) << "Credit Hour" << endl;
+    cout << "**************************************************************" << endl;
+    cout << "CS" << setw(14) << "310" << setw(23) << "Ethics of Computing" << setw(13) << one_credit_hour << endl;
+    cout << "CS" << setw(14) << "317" << setw(22) << "Computer Science 1" << setw(14) << three_credit_hours << endl;
+    cout << "ITE" << setw(13) << "305" << setw(27) << "Networking Fundamentals" << setw(9) << two_credit_hours << endl;
+    cout << "ITE" << setw(13) << "306" << setw(23) << "Local Area Networks" << setw(13) << two_credit_hours << endl;
+    cout << endl << endl;
+    
+
+    int totalCreditHours = one_credit_hour + three_credit_hours + two_credit_hours +two_credit_hours;
+    cout << "Total Enrollement Hours:" << setw(28) << totalCreditHours << endl;
+    cout << endl << endl;
+    
+    // Billing information
+    double tuitionCost = tuition_per_credit_hour * totalCreditHours;
+    double totalAmountDue = tuitionCost + registration_fees - scholarshipAmount;
+    cout << fixed << setprecision(2);
+    cout << " **********BILLING INFORMATION**********" << endl;
+    cout << setw(11) << "Tuition" << setw(29) << tuitionCost << endl;
+    cout << setw(11) << "Fees" << setw(29) << registration_fees << endl;
+    cout << setw(8) << "Scholarship" << setw(29) << scholarshipAmount << endl;
+    cout << endl;
+    cout << "Total Due:" << setw(30) << totalAmountDue << endl;
+    
+
+   return 0;
+}
+
+
+/*
+Your class information should have also been assigned to string variables and not hard coded into your output, same with your prefix numbers.
+*/
+
+/*
+
+string class1 = 'Ethics of Computing'
+string class2 = 'Computer Science 1'
+string class3 = 'Networking Fundamentals'
+string class4 = 'Local Area Networks'
+
+string prefix0 = "CS"
+string prefix1 = "ITE"
+
+string coursenum1 = '310'
+string coursenum2 = '317'
+string coursenum3= '305'
+string coursenum4 = '306'
+
+
+
+
+*/
