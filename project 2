@@ -22,23 +22,21 @@ int main() {
     string lastName;
     int studentID;
     double scholarshipAmount;
+    int number_of_classes;
 
-    const int one_credit_hour = 1;
     const int two_credit_hours = 2;
     const int three_credit_hours = 3;
 
     string prefix0 = "CS";
     string prefix1 = "ITE";
+;
+    string coursenum1 = "317";
+    string coursenum2= "305";
+    string coursenum3 = "306";
 
-    string coursenum1 = "310";
-    string coursenum2 = "317";
-    string coursenum3= "305";
-    string coursenum4 = "306";
-
-    string class1 = "Ethics of Computing";
-    string class2 = "Computer Science 1";
-    string class3 = "Networking Fundamentals";
-    string class4 = "Local Area Networks";
+    string class1 = "Computer Science 1";
+    string class2 = "Networking Fundamentals";
+    string class3 = "Local Area Networks";
 
 
     cout <<"            ***************WELCOME TO THE SEMESTER**************" << endl;
@@ -51,7 +49,12 @@ int main() {
     cin >> firstName >> lastName >> studentID;
     cout << endl;
     
-    
+    //Select Classes
+    cout << "How many classes do you plan on taking? (Please enter 1, 2, or 3)" << endl;
+    cin >> number_of_classes;
+    cout << endl << endl;
+
+
     // Scholarship Information
     cout << "Did you recieve a scholarship, if so please enter that amount or enter 0." << endl;
     cin >> scholarshipAmount;
@@ -66,14 +69,13 @@ int main() {
     cout << "           **********COURSE DETAILS**********" <<endl;
     cout << "Prefix" << setw(10) << "No." << setw(10) << "Title " << setw(30) << "Credit Hour" << endl;
     cout << "**************************************************************" << endl;
-    cout << prefix0 << setw(14) << coursenum1 << setw(23) << class1 << setw(13) << one_credit_hour << endl;
-    cout << prefix0 << setw(14) << coursenum2 << setw(22) << class2 << setw(14) << three_credit_hours << endl;
-    cout << prefix1 << setw(13) << coursenum3 << setw(27) << class3 << setw(9) << two_credit_hours << endl;
-    cout << prefix1 << setw(13) << coursenum4 << setw(23) << class4 << setw(13) << two_credit_hours << endl;
+    cout << prefix0 << setw(14) << coursenum1 << setw(22) << class1 << setw(14) << three_credit_hours << endl;
+    cout << prefix1 << setw(13) << coursenum2 << setw(27) << class2 << setw(9) << two_credit_hours << endl;
+    cout << prefix1 << setw(13) << coursenum3 << setw(23) << class3 << setw(13) << two_credit_hours << endl;
     cout << endl << endl;
     
 
-    int totalCreditHours = one_credit_hour + three_credit_hours + two_credit_hours +two_credit_hours;
+    int totalCreditHours = three_credit_hours + two_credit_hours +two_credit_hours;
     cout << "Total Enrollement Hours:" << setw(28) << totalCreditHours << endl;
     cout << endl << endl;
     
@@ -89,7 +91,42 @@ int main() {
     cout << "Total Due:" << setw(30) << totalAmountDue << endl;
     
     //Part 2
+
+    //Select Classes
+    int choice1, choice2, choice3;
+
+    cout << "Choose class 1: ";
+    cin >> choice1;
+
+    switch (choice1) {
+        case 1:
+            cout << "You chose CS 317 - Computer Science 1" << endl;
+            break;
+        case 2:
+            cout << "You chose ITE 305 - Networking Fundamentals" << endl;
+            break;
+        case 3:
+            cout << "You chose ITE 306 - Local Area Networks" << endl;
+            break;
+        default:
+            cout << "Invalid Choice" << endl;
+
+            return 0;
+    }
+
+    cout << "Choose class 2: ";
+    cin >> choice2;
+
     
+    
+    //Enter Scholarship
+
+    //View Schedule
+
+    //View Bill
+
+    // View Details
+
 
    return 0;
 }
