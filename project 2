@@ -22,7 +22,7 @@ int main() {
     string lastName;
     int studentID;
     double scholarshipAmount;
-    int number_of_classes;
+    
 
     const int two_credit_hours = 2;
     const int three_credit_hours = 3;
@@ -50,9 +50,84 @@ int main() {
     cout << endl;
     
     //Select Classes
-    cout << "How many classes do you plan on taking? (Please enter 1, 2, or 3)" << endl;
+    int number_of_classes;
+    int choice1, choice2, choice3;
+
+    cout << "How many classes do you plan to register for? (Please enter 1, 2, or 3)" << endl;
     cin >> number_of_classes;
     cout << endl << endl;
+
+    if (number_of_classes < 1 || number_of_classes > 3)
+    {
+        cout << "Invalid number of classes." << endl;
+
+        return 0;
+    }
+
+    cout << "Choose class 1: ";
+    cin >> choice1;
+
+    switch (choice1) {
+        case 1:
+            cout << "You chose CS 317 - Computer Science 1" << endl;
+            break;
+        case 2:
+            cout << "You chose ITE 305 - Networking Fundamentals" << endl;
+            break;
+        case 3:
+            cout << "You chose ITE 306 - Local Area Networks" << endl;
+            break;
+        default:
+            cout << "Invalid Choice" << endl;
+
+            return 0;
+    }
+
+    cout << "Choose class 2: ";
+    cin >> choice2;
+
+    //Making sure a different class is selected
+    while (choice2 == choice1) {
+        cout << "You must select a different class. Choose class 2: ";
+        cin >> choice2;
+    }
+
+    switch (choice2) {
+        case 1:
+            cout << "You chose CS 317 - Computer Science 1" << endl;
+            break;
+        case 2:
+            cout << "You chose ITE 305 - Networking Fundamentals" << endl;
+            break;
+        case 3:
+            cout << "You chose ITE 306 - Local Area Networks" << endl;
+            break;
+        default:
+            cout << "Invalid Choice" << endl;
+
+            return 0;
+    }
+
+     while (choice3 == choice1 || choice3 == choice2) {
+        cout << "You must select a different class. Choose class 3: ";
+        cin >> choice3;
+    }
+    
+    switch (choice3) {
+        case 1:
+            cout << "You chose CS 317 - Computer Science 1" << endl;
+            break;
+        case 2:
+            cout << "You chose ITE 305 - Networking Fundamentals" << endl;
+            break;
+        case 3:
+            cout << "You chose ITE 306 - Local Area Networks" << endl;
+            break;
+        default:
+            cout << "Invalid Choice" << endl;
+
+            return 0;
+    }
 
 
     // Scholarship Information
@@ -65,6 +140,7 @@ int main() {
     cout << "Thank you for entering your information, below is your class listing and bill for the Spring 2023 semester." << endl;
     cout << endl << endl;
 
+    //View Schedule
     // Course Details
     cout << "           **********COURSE DETAILS**********" <<endl;
     cout << "Prefix" << setw(10) << "No." << setw(10) << "Title " << setw(30) << "Credit Hour" << endl;
@@ -92,33 +168,7 @@ int main() {
     
     //Part 2
 
-    //Select Classes
-    int choice1, choice2, choice3;
 
-    cout << "Choose class 1: ";
-    cin >> choice1;
-
-    switch (choice1) {
-        case 1:
-            cout << "You chose CS 317 - Computer Science 1" << endl;
-            break;
-        case 2:
-            cout << "You chose ITE 305 - Networking Fundamentals" << endl;
-            break;
-        case 3:
-            cout << "You chose ITE 306 - Local Area Networks" << endl;
-            break;
-        default:
-            cout << "Invalid Choice" << endl;
-
-            return 0;
-    }
-
-    cout << "Choose class 2: ";
-    cin >> choice2;
-
-    
-    
     //Enter Scholarship
 
     //View Schedule
