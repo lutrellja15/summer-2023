@@ -11,10 +11,7 @@ int main() {
     if (numClasses == 1) {
         cout << "You picked one class." << endl;
 
-        string className;
-        cout << "Enter the name of the class: ";
-        cin.ignore(); // Ignore any remaining newline character
-        getline(cin, className);
+        
 
         cout << "Class selected: " << className << endl;
 
@@ -31,13 +28,9 @@ int main() {
     } else if (numClasses == 2) {
         cout << "You picked two classes." << endl;
 
-        string className1, className2;
-        cout << "Enter the name of class 1: ";
-        cin.ignore(); // Ignore any remaining newline character
-        getline(cin, className1);
+        
 
-        cout << "Enter the name of class 2: ";
-        getline(cin, className2);
+       
 
         cout << "Classes selected: " << className1 << ", " << className2 << endl;
 
@@ -62,19 +55,18 @@ int main() {
             cout << "Unknown class selected for class 2." << endl;
             // Code for handling unknown class for class 2
         }
+
+
+
+
+
+
+
     } else if (numClasses == 3) {
         cout << "You picked three classes." << endl;
 
-        string className1, className2, className3;
-        cout << "Enter the name of class 1: ";
-        cin.ignore(); // Ignore any remaining newline character
-        getline(cin, className1);
+        
 
-        cout << "Enter the name of class 2: ";
-        getline(cin, className2);
-
-        cout << "Enter the name of class 3: ";
-        getline(cin, className3);
 
         cout << "Classes selected: " << className1 << ", " << className2 << ", " << className3 << endl;
 
