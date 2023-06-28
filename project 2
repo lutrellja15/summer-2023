@@ -31,7 +31,7 @@ int main() {
     //Course Details
     string prefix0 = "CS";
     string prefix1 = "ITE";
-;
+
     string coursenum1 = "317";
     string coursenum2= "305";
     string coursenum3 = "310";
@@ -52,7 +52,7 @@ int main() {
     cout << endl;
     
     int menu_choice;
-    int choice1, choice2, choice3, choice4, choice5;
+    int choice1, choice2, choice3, scheduleChoice, billChoice, detailsChoice;
     int scholarship_choice;
     int number_of_classes;
 
@@ -193,21 +193,30 @@ int main() {
             cout << "Would you like to:" << endl;
             cout << "1. View the schedule on the screen" << endl;
             cout << "2. Print the file" << endl;
-            int choice;
-            cin >> choice;
+            int scheduleChoice;
+            cin >> scheduleChoice;
 
-            if (choice == 1) {
-                cout << "Dear " << firstName << " " << lastName << " " << "("<<studentID<<")" << endl;
-                cout << "Thank you for entering your information, below is your class listing the Spring 2023 semester." << endl;
-                cout << endl << endl;
-                cout << "           **********COURSE DETAILS**********" <<endl; 
-                cout << "Prefix" << setw(10) << "No." << setw(10) << "Title " << setw(30) << "Credit Hour" << endl;
-                
-                if (number_of_classes >= 1) {
-                    cout << class1;
-            }
-            }
+            if (scheduleChoice == 1 ) {
+                cout << "Please choose your class: ";
+                cin >> scheduleChoice;
 
+                if (scheduleChoice == 1) {
+                    cout << "           **********COURSE DETAILS**********" <<endl;
+                    cout << "Prefix" << setw(10) << "No." << setw(10) << "Title " << setw(30) << "Credit Hour" << endl;
+                    cout << "**************************************************************" << endl;
+                    cout << prefix0 << setw(14) << coursenum1 << setw(22) << class1 << setw(14) << three_credit_hours << endl;
+                    cout << prefix1 << setw(13) << coursenum2 << setw(27) << class2 << setw(9) << two_credit_hours << endl;
+                    cout << prefix0 << setw(13) << coursenum3 << setw(23) << class3 << setw(13) << one_credit_hour << endl;
+                    cout << endl << endl;
+                } else if (scheduleChoice == 2) {
+                    outputFile("Schedule.txt");
+                } else {
+                    cout << "Invalid choice. Please select 1 or 2." << endl;
+                }
+                break;           
+
+            }
+            
 
 
 
@@ -229,8 +238,37 @@ int main() {
             cout << "Would you like to:" << endl;
             cout << "1. View the bill on the screen" << endl;
             cout << "2. Print the file" << endl;
-            int choice;
-            cin >> choice;
+            cin >> billChoice;
+
+            if (billChoice ==1) {
+                cout << " **********BILLING INFORMATION**********" << endl;
+                cout << fixed << setprecision(2);
+                cout << setw(11) << "Tuition" << setw(29) << tuitionCost << endl;
+                cout << setw(11) << "Fees" << setw(29) << registration_fees << endl;
+                cout << setw(8) << "Scholarship" << setw(29) << scholarshipAmount << endl;
+                cout << endl;
+                cout << "Total Due:" << setw(30) << totalAmountDue << endl;
+            } if else (billChoice ==2){
+                ofstream outputfile("Bill.txt");
+
+                if (outputFile.is_open()) {
+                    outputFile << " **********BILLING INFORMATION**********" << endl;
+                    outputFile << fixed << setprecision(2);
+                    outputFile << setw(11) << "Tuition" << setw(29) << tuitionCost << endl;
+                    outputFile << setw(11) << "Fees" << setw(29) << registration_fees << endl;
+                    outputFile << setw(8) << "Scholarship" << setw(29) << scholarshipAmount << endl;
+                    outputFile << endl;
+                    outputFile << "Total Due:" << setw(30) << totalAmountDue << endl;
+                        outputFile.close();
+                        cout << "Bill written to Bill.txt successfully." << endl;
+                } else {
+                    cout << "Unable to open the file Bill.txt. Failed to write the bill." << endl;
+                } else {
+                    cout << "Invalid choice. Please select 1 or 2." << endl;
+                }
+            }
+                break;
+            
              // Billing information
            /* double tuitionCost = tuition_per_credit_hour * totalCreditHours;
             double totalAmountDue = tuitionCost + registration_fees - scholarshipAmount;
@@ -248,15 +286,21 @@ int main() {
             cout << "Would you like to:" << endl;
             cout << "1. View the details on the screen" << endl;
             cout << "2. Print the file" << endl;
-            int choice;
-            cin >> choice;
+            cin >> detailsChoice;
 
             case 6: //Exit
                 break;
 
         }
-    
+        
     }
+    
+ 
+
+
+}
+    return 0;
+}
 
    
     
@@ -309,6 +353,6 @@ int main() {
     // View Details
 
 
-   return 0;
+
 }
 }
