@@ -1,0 +1,87 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+    cout << "Welcome to the course scheduler!" << endl;
+
+    // Get user inputs
+    cout << "Enter the number of classes you want to take: ";
+    int numClasses;
+    cin >> numClasses;
+
+    // Clear the input buffer
+    cin.ignore();
+
+    // Define variables for course names
+    string course1, course2, course3;
+
+    // Get course names based on the number of classes
+    if (numClasses >= 1) {
+        cout << "Enter the name of course 1: ";
+        getline(cin, course1);
+    }
+
+    if (numClasses >= 2) {
+        cout << "Enter the name of course 2: ";
+        getline(cin, course2);
+    }
+
+    if (numClasses == 3) {
+        cout << "Enter the name of course 3: ";
+        getline(cin, course3);
+    }
+
+    // Display or print the course schedule
+    cout << "\nWould you like to:\n1. View the schedule on the screen\n2. Print the schedule to a file" << endl;
+    int choice;
+    cin >> choice;
+
+    if (choice == 1) {
+        // Display the course schedule on the screen
+        cout << "\nYour course schedule is as follows:" << endl;
+        cout << "----------------------------------" << endl;
+
+        if (numClasses >= 1) {
+            cout << "Course 1: " << course1 << endl;
+        }
+
+        if (numClasses >= 2) {
+            cout << "Course 2: " << course2 << endl;
+        }
+
+        if (numClasses == 3) {
+            cout << "Course 3: " << course3 << endl;
+        }
+    } else if (choice == 2) {
+        // Write the course schedule to a file
+        ofstream outputFile("Schedule.txt");
+
+        if (outputFile.is_open()) {
+            outputFile << "Your course schedule is as follows:" << endl;
+            outputFile << "----------------------------------" << endl;
+
+            if (numClasses >= 1) {
+                outputFile << "Course 1: " << course1 << endl;
+            }
+
+            if (numClasses >= 2) {
+                outputFile << "Course 2: " << course2 << endl;
+            }
+
+            if (numClasses == 3) {
+                outputFile << "Course 3: " << course3 << endl;
+            }
+
+            outputFile.close();
+            cout << "\nCourse schedule written to Schedule.txt successfully." << endl;
+        } else {
+            cout << "Unable to open the file. Failed to write the course schedule." << endl;
+        }
+    } else {
+        cout << "Invalid choice. Please select 1 or 2." << endl;
+    }
+
+    return 0;
+}
