@@ -1,0 +1,99 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string firstName, lastName, studentID;
+    const double tuitionPerCreditHour = 263.00;
+    const double registrationFees = 162.50;
+
+    // Function to display the schedule
+    auto displaySchedule = []() {
+        cout << "\nViewing the schedule on the screen:" << endl;
+        // Code for displaying the schedule
+    };
+
+    // Function to display the bill
+    auto displayBill = [](double totalBill) {
+        cout << "\nViewing the bill on the screen:" << endl;
+        // Code for displaying the bill
+    };
+
+    // Function to display the details
+    auto displayDetails = []() {
+        cout << "\nViewing the details on the screen:" << endl;
+        // Code for displaying the details
+    };
+
+    // Function to write a file
+    auto writeFile = [](const string& content, const string& fileName) {
+        ofstream outputFile(fileName);
+
+        if (outputFile.is_open()) {
+            outputFile << content;
+            outputFile.close();
+            cout << "\n" << fileName << " written successfully." << endl;
+        } else {
+            cout << "Unable to open the file. Failed to write " << fileName << "." << endl;
+        }
+    };
+
+    while (true) {
+        cout << "\nMenu:\n1. Select Classes\n2. Enter Scholarship\n3. View Schedule\n4. View Bill\n5. View Details\n6. Exit" << endl;
+        int choice;
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                int numClasses;
+                cout << "Enter the number of classes you plan to register for (1, 2, or 3): ";
+                cin >> numClasses;
+
+                // Code for handling class selection
+                break;
+            }
+            case 2: {
+                string scholarshipType;
+                cout << "Enter the type of scholarship you are receiving (e.g., Academic, Foundation): ";
+                cin >> scholarshipType;
+
+                // Code for handling scholarship selection
+                break;
+            }
+            case 3: {
+                cout << "Would you like to:\n1. View the schedule on the screen\n2. Print the schedule to a file" << endl;
+                int scheduleChoice;
+                cin >> scheduleChoice;
+
+                if (scheduleChoice == 1) {
+                    displaySchedule();
+                } else if (scheduleChoice == 2) {
+                    string scheduleContent = "Schedule content goes here.";
+                    writeFile(scheduleContent, "Schedule.txt");
+                } else {
+                    cout << "Invalid choice. Please select 1 or 2." << endl;
+                }
+                break;
+            }
+            case 4: {
+                cout << "Would you like to:\n1. View the bill on the screen\n2. Print the bill to a file" << endl;
+                int billChoice;
+                cin >> billChoice;
+
+                if (billChoice == 1) {
+                    double totalBill = 0.0;
+                    // Code to calculate the bill based on selected classes and scholarship
+                    displayBill(totalBill);
+                } else if (billChoice == 2) {
+                    string billContent = "Bill content goes here.";
+                    writeFile(billContent, "Bill.txt");
+                } else {
+                    cout << "Invalid choice. Please select 1 or 2." << endl;
+                }
+                break;
+            }
+            case 5: {
+                cout << "Would you like to:\n1. View the details on the screen\n2. Print
