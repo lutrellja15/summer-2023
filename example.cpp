@@ -36,6 +36,8 @@ string class1_selected="";
 string class2_selected="";
 string class3_selected="";
 
+string scholarship_choice_value= "";
+
 string class1_short = "Computer Science 1";
 string class2_short = "Networking Fundamentals";
 string class3_short = "Ethics of Computing";
@@ -117,25 +119,20 @@ while (menu_choice != 6)
         cout << "1. Academic Scholarship" << endl;
         cout << "2. Foundation Scholarship" << endl;
         cin >> scholarship_choice;           
-        
 
-        while(true){
+        if (scholarship_choice == 1) {
+            cout << "Academic Scholarship" << endl;
+            scholarship_choice_value="Academic Scholarship";
+            
+        } else if (scholarship_choice == 2) {
+            cout << "Foundation Scholarship" << endl; 
+            scholarship_choice_value="Foundation Scholarship";
+            
+        }
 
-            if (scholarship_choice == 1) {
-                cout << "Academic Scholarship" << endl;
-                break;
-
-            } else if (scholarship_choice == 2) {
-                cout << "Foundation Scholarship" << endl; 
-                break;
-
-            }
-
-            else{
-                cout << "Invalid choice given, please select 1 or 2: " << endl;
-                cin >> scholarship_choice;
-
-            }
+        else{
+            cout << "Invalid choice given, please select 1 or 2: " << endl;
+            cin >> scholarship_choice;
 
         }
 
@@ -149,10 +146,7 @@ while (menu_choice != 6)
         cout << "Would you like to:" << endl;
         cout << "1. View the schedule on the screen" << endl;
         cout << "2. Print the file" << endl;
-        //int choice;
         cin >> choice;
-
-
         if (choice == 1) {
             cout << "Dear " << firstName << " " << lastName << " " << "("<<studentID<<")" << endl;
             cout << "Thank you for entering your information, below is your class listing the Spring 2023 semester." << endl;
@@ -244,14 +238,65 @@ while (menu_choice != 6)
 
         
 
-        case 5://View Details
-        //cout << "You selected View Details." << endl << endl;
-        //cout << "Would you like to:" << endl;
-        //cout << "1. View the details on the screen" << endl;
-        //cout << "2. Print the file" << endl;
+        case 5:
+             // View Details
+             cout << "Would you like to:" << endl;
+             cout << "1. View the details on the screen" << endl;
+             cout << "2. Print the file" << endl;
+             
+             cin >> choice;
 
-        //int choice;
-        //cin >> choice;
+             if (choice ==  1) {
+                 cout << "\nStudent Details:" << endl;
+                 cout << "*****************" << endl;
+                 cout << "Name: " << firstName << " " << lastName << endl;
+                 cout << "Student ID: " << studentID << endl;
+                 cout << "Number of Classes: " << number_of_classes << endl;
+                if(class1_selected == class1)
+                    cout<<class1<<endl;
+                if(class2_selected == class2)
+                    cout<<class2<<endl;
+                if(class3_selected==class3)
+                    cout<<class3<<endl;
+                cout<<endl<<endl;
+                 cout << "Scholarship Type: " << scholarship_choice_value << endl;
+                 cout << "Scholarship amount"<< scholarshipAmount<<endl;
+                 cout << "Total Amount Due for Spring 2023 Semester: $" << totalAmountDue << endl;
+             }
+             else if (choice == 2) {
+                 ofstream detailsFile("Details.txt");
+
+                 if (detailsFile.is_open()) {
+                     detailsFile << "\nStudent Details:" << endl;
+                     detailsFile << "***************" << endl;
+                     detailsFile << "Name: " << firstName << " " << lastName << endl;
+                     detailsFile << "Student ID: " << studentID << endl;
+                     detailsFile << "Number of Classes: " << number_of_classes << endl;
+                     detailsFile << "Class 1: " << class1 << endl;
+                     if (number_of_classes >= 2) {
+                         detailsFile << "Class 2: " << class2 << endl;
+                     }
+                     if (number_of_classes == 3) {
+                         detailsFile << "Class 3: " << class3 << endl;
+                     }
+                     detailsFile << "Scholarship Type: " << scholarship_choice_value << endl;
+                     detailsFile << "Scholarship amount"<< scholarshipAmount<<endl;
+
+                     detailsFile << "Total Amount Due for Spring 2023 Semester: $" << totalAmountDue << endl;
+
+                     detailsFile.close();
+
+                     cout << "Details written to Details.txt successfully." << endl;
+                 }
+                 else {
+                     cout << "Unable to open the file Details.txt. Failed to write the details." << endl;
+                 }
+             }
+             else {
+                 cout << "Invalid choice. Please select 1 or 2." << endl;
+             }
+
+             break;
 
         case 6: //Exit
 
