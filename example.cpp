@@ -24,12 +24,14 @@ string firstName;
 string lastName;
 int studentID;
 double scholarshipAmount;
+double tuitionCost;
 
 //Number of Credit Hours
 const int class3_credit = 1;
 const int class2_credit = 2;
 const int class1_credit = 3;
 
+double totalAmountDue;
 string class1_selected="";
 string class2_selected="";
 string class3_selected="";
@@ -53,7 +55,7 @@ cout << endl;
 cin >> firstName >> lastName >> studentID;
 cout << endl;
 
-int menu_choice,semeter_totalhours=0 ;
+int menu_choice,totalCreditHours=0 ;
 int choice, choice2, choice3, choice4, choice5;
 int scholarship_choice;
 int number_of_classes;
@@ -85,20 +87,20 @@ while (menu_choice != 6)
             cout << "2. ITE 305 - Networking Fundamentals" << endl;
             cout << "3. CS 310 - Ethics of Computing" << endl << endl;
 
-            cout << "Please choose two classes: ";
+            cout << "Please choose "<< number_of_classes <<" classes: ";
             for( int i=0;i<number_of_classes;i++)
             {
                 cin >> choice;
             if (choice == 1) {
-                semeter_totalhours+=3;
+                totalCreditHours+=3;
                 class1_selected = class1;
                 value_selected = class1_short;
             } else if (choice == 2) {
-                semeter_totalhours+=2;
+                totalCreditHours+=2;
                 class2_selected = class2;
                 value_selected = class2_short;
             } else if (choice == 3) {
-                semeter_totalhours+=1;
+                totalCreditHours+=1;
                 class3_selected = class3;
                 value_selected = class3_short;
             } else{
@@ -197,21 +199,22 @@ while (menu_choice != 6)
                 {
                     cout << "Failed to write to file.\n";
                 }
+            
         }
         
         break;
-        //case 4://View Bill
-        //cout << "You selected View Bill." << endl << endl;
-        //cout << "Would you like to:" << endl;
-        //cout << "1. View the bill on the screen" << endl;
-        //cout << "2. Print the file" << endl;
-        //cin >> billChoice;
+        case 4:
+        cout << "You selected View Bill." << endl << endl;
+        cout << "Would you like to:" << endl;
+        cout << "1. View the bill on the screen" << endl;
+        cout << "2. Print the file" << endl;
+        cin >> choice;
 
-    /*    double tuitionCost = tuition_per_credit_hour * totalCreditHours;
-        double totalAmountDue = tuitionCost + registration_fees - scholarshipAmount;
+        tuitionCost = tuition_per_credit_hour * totalCreditHours;
+        totalAmountDue = tuitionCost + registration_fees - scholarshipAmount;
         cout << fixed << setprecision(2);
 
-        if (billChoice ==1) {
+        if (choice == 1) {
             cout << " **********BILLING INFORMATION**********" << endl;
             cout << fixed << setprecision(2);
             cout << setw(11) << "Tuition" << setw(29) << tuitionCost << endl;
@@ -219,8 +222,8 @@ while (menu_choice != 6)
             cout << setw(8) << "Scholarship" << setw(29) << scholarshipAmount << endl;
             cout << endl;
             cout << "Total Due:" << setw(30) << totalAmountDue << endl;
-        } if else (billChoice ==2){
-            ofstream outputfile("Bill.txt");
+        } else if (choice == 2){
+            ofstream outputFile("Bill.txt");
 
             if (outputFile.is_open()) {
                 outputFile << " **********BILLING INFORMATION**********" << endl;
@@ -230,19 +233,18 @@ while (menu_choice != 6)
                 outputFile << setw(8) << "Scholarship" << setw(29) << scholarshipAmount << endl;
                 outputFile << endl;
                 outputFile << "Total Due:" << setw(30) << totalAmountDue << endl;
-                    outputFile.close();
-                    cout << "Bill written to Bill.txt successfully." << endl;
-            } if {
-                cout << "Unable to open the file Bill.txt. Failed to write the bill." << endl;
+                outputFile.close();
+                cout << "Bill written to Bill.txt successfully." << endl;
             } else {
-                cout << "Invalid choice. Please select 1 or 2." << endl;
-            }
+                cout << "Unable to open the file Bill.txt. Failed to write the bill." << endl;
+            } 
         }
-            break;
 
-        */
+        break;
 
-        //case 5://View Details
+        
+
+        case 5://View Details
         //cout << "You selected View Details." << endl << endl;
         //cout << "Would you like to:" << endl;
         //cout << "1. View the details on the screen" << endl;
