@@ -142,6 +142,10 @@ while (menu_choice != 6)
         break;
 
         case 3: // View Schedule
+        if(class1_selected=="" && class2_selected ==""&& class3_selected==""){
+            cout<<" you must select a class first"<<endl;
+            break;
+        }
         cout << "You selected View Schedule." << endl << endl;
         cout << "Would you like to:" << endl;
         cout << "1. View the schedule on the screen" << endl;
@@ -267,6 +271,7 @@ while (menu_choice != 6)
                  ofstream detailsFile("Details.txt");
 
                  if (detailsFile.is_open()) {
+                    detailsFile<< fixed << setprecision(2);
                      detailsFile << "\nStudent Details:" << endl;
                      detailsFile << "***************" << endl;
                      detailsFile << "Name: " << firstName << " " << lastName << endl;
@@ -280,7 +285,7 @@ while (menu_choice != 6)
                          detailsFile << "Class 3: " << class3 << endl;
                      }
                      detailsFile << "Scholarship Type: " << scholarship_choice_value << endl;
-                     detailsFile << "Scholarship amount"<< scholarshipAmount<<endl;
+                     detailsFile << "Scholarship amount: "<< scholarshipAmount<<endl;
 
                      detailsFile << "Total Amount Due for Spring 2023 Semester: $" << totalAmountDue << endl;
 
