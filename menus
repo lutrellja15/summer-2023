@@ -1,0 +1,155 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+const int NUM_COMPETITORS = 3;
+
+struct Competitor {
+    string name;
+    float attempt1;
+    float attempt2;
+    float bestAttempt;
+    int points;
+};
+
+// Function prototypes
+void displayMenu();
+void enterCompetitors(Competitor competitors[]);
+bool verifyPositiveValue(float value);
+void enterAttempt(Competitor& competitor, const string& eventName);
+void enterAttemptMin(Competitor& competitor, const string& eventName);
+void rankCompetitors(Competitor competitors[], const string& eventName);
+void displayResults(const Competitor competitors[]);
+
+int main() {
+    Competitor competitors[NUM_COMPETITORS];
+    int eventChoice;
+
+    while (true) {
+        displayMenu();
+        cout << "Enter your choice: ";
+        cin >> eventChoice;
+
+        switch (eventChoice) {
+            case 1:
+                enterCompetitors(competitors);
+                for (int i = 0; i < NUM_COMPETITORS; i++) {
+                    enterAttemptMin(competitors[i], "Farmers Frame Medley");
+                }
+                rankCompetitors(competitors, "Farmers Frame Medley");
+                break;
+
+            case 2:
+                enterCompetitors(competitors);
+                for (int i = 0; i < NUM_COMPETITORS; i++) {
+                    enterAttempt(competitors[i], "Axle Deadlift");
+                }
+                rankCompetitors(competitors, "Axle Deadlift");
+                break;
+
+            case 3:
+                enterCompetitors(competitors);
+                for (int i = 0; i < NUM_COMPETITORS; i++) {
+                    enterAttempt(competitors[i], "Stone Over Bar");
+                }
+                rankCompetitors(competitors, "Stone Over Bar");
+                break;
+
+            case 4:
+                displayResults(competitors);
+                return 0;
+
+            default:
+                cout << "Invalid choice!" << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
+
+void displayMenu() {
+    cout << "\nChoose the event:\n";
+    cout << "1. Farmers Frame Medley\n";
+    cout << "2. Axle Deadlift\n";
+    cout << "3. Stone Over Bar\n";
+    cout << "4. Quit\n";
+}
+
+void enterCompetitors(Competitor competitors[]) {
+    cin.ignore();
+    for (int i = 0; i < NUM_COMPETITORS; i++) {
+        cout << "Enter the name of competitor " << i + 1 << ": ";
+        getline(cin, competitors[i].name);
+    }
+}
+
+bool verifyPositiveValue(float value) {
+    return value > 0;
+}
+
+void enterAttempt(Competitor& competitor, const string& eventName) {
+    cout << "Enter the result for " << competitor.name << "'s " << eventName << " attempt 1: ";
+    cin >> competitor.attempt1;
+
+    cout << "Enter the result for " << competitor.name << "'s " << eventName << " attempt 2: ";
+    cin >> competitor.attempt2;
+
+    competitor.bestAttempt = max(competitor.attempt1, competitor.attempt2);
+}
+
+void enterAttemptMin(Competitor& competitor, const string& eventName) {
+    cout << "Enter the result for " << competitor.name << "'s " << eventName << " attempt 1: ";
+    cin >> competitor.attempt1;
+    while (!verifyPositiveValue(competitor.attempt1)) {
+        cout << "Invalid value! Please enter a positive number: ";
+        cin >> competitor.attempt1;
+    }
+
+    cout << "Enter the result for " << competitor.name << "'s " << eventName << " attempt 2: ";
+    cin >> competitor.attempt2;
+    while (!verifyPositiveValue(competitor.attempt2)) {
+        cout << "Invalid value! Please enter a positive number: ";
+        cin >> competitor.attempt2;
+    }
+
+    competitor.bestAttempt = min(competitor.attempt1, competitor.attempt2);
+}
+
+void rankCompetitors(Competitor competitors[], const string& eventName) {
+    for (int i = 0; i < NUM_COMPETITORS - 1; i++) {
+        for (int j = 0; j < NUM_COMPETITORS - 1 - i; j++) {
+            if (competitors[j].bestAttempt < competitors[j + 1].bestAttempt) {
+                Competitor temp = competitors[j];
+                competitors[j] = competitors[j + 1];
+                competitors[j + 1] = temp;
+            }
+        }
+    }
+
+    int points = 3;
+    for (int i = 0; i < NUM_COMPETITORS; i++) {
+        competitors[i].points += points;
+        points--;
+    }
+
+    cout << "\nEvent: " << eventName << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << setw(10) << "Rank" << setw(15) << "Competitor" << setw(10) << "Attempt" << setw(10) << "Points" << endl;
+    cout << "-------------------------------------------------------" << endl;
+    for (int i = 0; i < NUM_COMPETITORS; i++) {
+        cout << setw(10) << i + 1 << setw(15) << competitors[i].name << setw(10) << competitors[i].bestAttempt << setw(10) << competitors[i].points << endl;
+    }
+}
+
+void displayResults(const Competitor competitors[]) {
+    cout << "\nFinal Results\n";
+    cout << "-------------------------------------------------------" << endl;
+    cout << setw(10) << "Competitor" << setw(10) << "Points" << endl;
+    cout << "-------------------------------------------------------" << endl;
+    for (int i = 0; i < NUM_COMPETITORS; i++) {
+        cout << setw(10) << competitors[i].name << setw(10) << competitors[i].points << endl;
+    }
+}
