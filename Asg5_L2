@@ -1,0 +1,158 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+const int NUM_COMPETITORS = 3;
+
+// Function prototypes
+void displayMenu();
+void enterCompetitors(string competitors[]);
+bool verifyPositiveValue(float value);
+void enterAttempt(float& attempt1, float& attempt2, const string& competitorName, const string& eventName);
+void enterAttemptMin(float& attempt1, float& attempt2, const string& competitorName, const string& eventName);
+void rankCompetitors(float attempt1, float attempt2, int& points1, int& points2, int& points3, const string& competitorName1, const string& competitorName2, const string& competitorName3, const string& eventName);
+void displayResults(const string& competitorName1, int points1, const string& competitorName2, int points2, const string& competitorName3, int points3);
+
+int main() {
+    string competitorName1;
+    string competitorName2;
+    string competitorName3;
+    float attempt1;
+    float attempt2;
+    int points1 = 0;
+    int points2 = 0;
+    int points3 = 0;
+
+    int eventChoice;
+
+    while (true) {
+        displayMenu();
+        cout << "Enter your choice: ";
+        cin >> eventChoice;
+
+        switch (eventChoice) {
+            case 1:
+                enterCompetitors(competitorName1, competitorName2, competitorName3);
+                enterAttemptMin(attempt1, attempt2, competitorName1, "Farmers Frame Medley");
+                rankCompetitors(attempt1, attempt2, points1, points2, points3, competitorName1, competitorName2, competitorName3, "Farmers Frame Medley");
+                break;
+
+            case 2:
+                enterCompetitors(competitorName1, competitorName2, competitorName3);
+                enterAttempt(attempt1, attempt2, competitorName1, "Axle Deadlift");
+                rankCompetitors(attempt1, attempt2, points1, points2, points3, competitorName1, competitorName2, competitorName3, "Axle Deadlift");
+                break;
+
+            case 3:
+                enterCompetitors(competitorName1, competitorName2, competitorName3);
+                enterAttempt(attempt1, attempt2, competitorName1, "Stone Over Bar");
+                rankCompetitors(attempt1, attempt2, points1, points2, points3, competitorName1, competitorName2, competitorName3, "Stone Over Bar");
+                break;
+
+            case 4:
+                displayResults(competitorName1, points1, competitorName2, points2, competitorName3, points3);
+                return 0;
+
+            default:
+                cout << "Invalid choice!" << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
+
+void displayMenu() {
+    cout << "\nChoose the event:\n";
+    cout << "1. Farmers Frame Medley\n";
+    cout << "2. Axle Deadlift\n";
+    cout << "3. Stone Over Bar\n";
+    cout << "4. Quit\n";
+}
+
+void enterCompetitors(string& competitorName1, string& competitorName2, string& competitorName3) {
+    cin.ignore();
+    cout << "Enter the name of competitor 1: ";
+    getline(cin, competitorName1);
+    cout << "Enter the name of competitor 2: ";
+    getline(cin, competitorName2);
+    cout << "Enter the name of competitor 3: ";
+    getline(cin, competitorName3);
+}
+
+bool verifyPositiveValue(float value) {
+    return value > 0;
+}
+
+void enterAttempt(float& attempt1, float& attempt2, const string& competitorName, const string& eventName) {
+    cout << "Enter " << competitorName << "'s " << eventName << " attempt 1: ";
+    cin >> attempt1;
+
+    while (!verifyPositiveValue(attempt1)) {
+        cout << "Invalid attempt. Please enter a positive value: ";
+        cin >> attempt1;
+    }
+
+    cout << "Enter " << competitorName << "'s " << eventName << " attempt 2: ";
+    cin >> attempt2;
+
+    while (!verifyPositiveValue(attempt2)) {
+        cout << "Invalid attempt. Please enter a positive value: ";
+        cin >> attempt2;
+    }
+}
+
+void enterAttemptMin(float& attempt1, float& attempt2, const string& competitorName, const string& eventName) {
+    cout << "Enter the minimum distance for " << eventName << ": ";
+    float minDistance;
+    cin >> minDistance;
+
+    cout << "Enter " << competitorName << "'s " << eventName << " attempt 1: ";
+    cin >> attempt1;
+
+    while (attempt1 < minDistance) {
+        cout << "Invalid attempt. Distance must be greater than or equal to " << minDistance << ": ";
+        cin >> attempt1;
+    }
+
+    cout << "Enter " << competitorName << "'s " << eventName << " attempt 2: ";
+    cin >> attempt2;
+
+    while (attempt2 < minDistance) {
+        cout << "Invalid attempt. Distance must be greater than or equal to " << minDistance << ": ";
+        cin >> attempt2;
+    }
+}
+
+void rankCompetitors(float attempt1, float attempt2, int& points1, int& points2, int& points3, const string& competitorName1, const string& competitorName2, const string& competitorName3, const string& eventName) {
+    if (attempt1 > attempt2) {
+        points1 += 3;
+    } else if (attempt2 > attempt1) {
+        points2 += 3;
+    } else {
+        points1 += 1;
+        points2 += 1;
+    }
+
+    points3 += 2;
+
+    cout << "\nEvent: " << eventName << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << setw(10) << "Rank" << setw(15) << "Competitor" << setw(10) << "Attempt" << setw(10) << "Points" << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << setw(10) << "1" << setw(15) << competitorName1 << setw(10) << attempt1 << setw(10) << points1 << endl;
+    cout << setw(10) << "2" << setw(15) << competitorName2 << setw(10) << attempt2 << setw(10) << points2 << endl;
+    cout << setw(10) << "3" << setw(15) << competitorName3 << setw(10) << "N/A" << setw(10) << points3 << endl;
+}
+
+void displayResults(const string& competitorName1, int points1, const string& competitorName2, int points2, const string& competitorName3, int points3) {
+    cout << "\nFinal Results\n";
+    cout << "-------------------------------------------------------" << endl;
+    cout << setw(10) << "Competitor" << setw(10) << "Points" << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << setw(10) << competitorName1 << setw(10) << points1 << endl;
+    cout << setw(10) << competitorName2 << setw(10) << points2 << endl;
+    cout << setw(10) << competitorName3 << setw(10) << points3 << endl;
+}
