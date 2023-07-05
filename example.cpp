@@ -220,6 +220,10 @@ while (menu_choice != 6)
             cout << setw(8) << "Scholarship" << setw(29) << scholarshipAmount << endl;
             cout << endl;
             cout << "Total Due:" << setw(30) << totalAmountDue << endl;
+           if (totalAmountDue<0)
+            {
+                cout << "You have a credit in the amount of  " << totalAmountDue << endl;
+            }
         } else if (choice == 2){
             ofstream outputFile("Bill.txt");
 
@@ -231,11 +235,16 @@ while (menu_choice != 6)
                 outputFile << setw(8) << "Scholarship" << setw(29) << scholarshipAmount << endl;
                 outputFile << endl;
                 outputFile << "Total Due:" << setw(30) << totalAmountDue << endl;
+            if (totalAmountDue<0)
+            {
+                outputFile << "You have a credit in the amount of  " << totalAmountDue << endl;
+            }
                 outputFile.close();
                 cout << "Bill written to Bill.txt successfully." << endl;
             } else {
                 cout << "Unable to open the file Bill.txt. Failed to write the bill." << endl;
-            } 
+            }
+            
         }
 
         break;
