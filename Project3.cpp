@@ -256,28 +256,7 @@ const double registration_fees = 162.50;
         cout << " you must select a class first" << endl;
         //return to menu
     }
-    cout << "You selected View Schedule." << endl << endl;
-    cout << "Would you like to:" << endl;
-    cout << "1. View the schedule on the screen" << endl;
-    cout << "2. Print the file" << endl;
-    cin >> choice;
-    if (choice == 1) {
-        cout << "Dear " << firstName << " " << lastName << " " << "(" << studentID << ")" << endl;
-        cout << "Thank you for entering your information, below is your class listing the Spring 2023 semester." << endl;
-        cout << endl << endl;
-        cout << "           **********COURSE DETAILS**********" << endl;
-        cout << "Prefix" << setw(10) << "No." << setw(10) << "Title " << setw(30) << "Credit Hour" << endl;
-
-        if (class1_selected == class1)
-            cout << class1 << endl;
-        if (class2_selected == class2)
-            cout << class2 << endl;
-        if (class3_selected == class3)
-            cout << class3 << endl;
-        cout << endl << endl;
-
-    }
-    if (choice == 2)
+    else
     {
         //do the printing to file
         ofstream scheduleFile("Schedule.txt");
